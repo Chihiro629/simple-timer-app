@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>シンプルタイマー</title>
+    <meta name="description" content="ブラウザだけで動く、シンプルなカウントダウンタイマーです。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>シンプルタイマー</h1>
+      <p class="lead">分と秒を設定して、カウントダウンを開始できます。</p>
+    </header>
+
+    <main class="app">
+      <section class="card" aria-labelledby="settings-heading">
+        <h2 id="settings-heading" class="visually-hidden">時間の設定</h2>
+        <form id="timer-form" class="settings" novalidate>
+          <div class="field">
+            <label for="minutes">分（0〜99）</label>
+            <input
+              id="minutes"
+              name="minutes"
+              type="number"
+              inputmode="numeric"
+              min="0"
+              max="99"
+              step="1"
+              value="5"
+              autocomplete="off"
+            />
+          </div>
+          <div class="field">
+            <label for="seconds">秒（0〜59）</label>
+            <input
+              id="seconds"
+              name="seconds"
+              type="number"
+              inputmode="numeric"
+              min="0"
+              max="59"
+              step="1"
+              value="0"
+              autocomplete="off"
+            />
+          </div>
+        </form>
+
+        <p id="error" class="error" role="alert" hidden></p>
+
+        <div class="display">
+          <p class="display-label" id="remaining-label">残り時間</p>
+          <p
+            id="remaining"
+            class="remaining"
+            role="timer"
+            aria-labelledby="remaining-label"
+            aria-live="off"
+          >
+            05:00
+          </p>
+        </div>
+
+        <div class="controls">
+          <button id="start" type="button" class="primary">スタート</button>
+          <button id="pause" type="button" disabled>一時停止</button>
+          <button id="reset" type="button">リセット</button>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite">停止中です。</p>
+      </section>
+
+      <section class="card note" aria-labelledby="note-heading">
+        <h2 id="note-heading">使い方</h2>
+        <ul>
+          <li>分と秒を入力して「スタート」を押すとカウントダウンが始まります。</li>
+          <li>「一時停止」で止め、もう一度押すと再開します。</li>
+          <li>「リセット」で設定した時間に戻ります。</li>
+          <li>0 になると画面が点滅し、音でお知らせします。</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>外部サービスに接続しない、静的なWebアプリです。</p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
